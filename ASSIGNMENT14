@@ -1,0 +1,123 @@
+Q1. Is an assignment operator like += only for show? Is it possible that it would lead to faster results
+at the runtime?
+
+Q2. What is the smallest number of statements you&#39;d have to write in most programming languages to
+replace the Python expression a, b = a + b, a?
+
+Q3. In Python, what is the most effective way to set a list of 100 integers to 0?
+
+Q4. What is the most effective way to initialise a list of 99 integers that repeats the sequence 1, 2, 3?
+S If necessary, show step-by-step instructions on how to accomplish this.
+
+Q5. If you&#39;re using IDLE to run a Python application, explain how to print a multidimensional list as
+efficiently?
+
+Q6. Is it possible to use list comprehension with a string? If so, how can you go about doing it?
+
+Q7. From the command line, how do you get support with a user-written Python programme? Is this
+possible from inside IDLE?
+
+Q8. Functions are said to be “first-class objects” in Python but not in most other languages, such as
+C++ or Java. What can you do in Python with a function (callable object) that you can&#39;t do in C or
+C++?
+
+Q9. How do you distinguish between a wrapper, a wrapped feature, and a decorator?
+
+Q10. If a function is a generator function, what does it return?
+
+Q11. What is the one improvement that must be made to a function in order for it to become a
+generator function in the Python language?
+
+Q12. Identify at least one benefit of generators.
+
+SOLUTION.
+Q1. An assignment operator like += is not just for show, it serves a purpose and can lead to faster results at runtime. The += operator combines addition and assignment, which can be more efficient than writing separate statements for addition and assignment. By using +=, you can avoid creating a temporary variable to hold the intermediate result and directly modify the value of the variable in place, potentially saving memory and improving performance.
+
+Q2. In most programming languages, including Python, the smallest number of statements to replace the Python expression `a, b = a + b, a` would be two statements. Here's an example:
+
+```python
+temp = a + b
+a, b = temp, a
+```
+
+The first statement calculates the sum of `a` and `b` and assigns it to a temporary variable `temp`. The second statement assigns the values of `temp` and `a` back to `a` and `b`, respectively, achieving the same effect as the original Python expression.
+
+Q3. In Python, the most effective way to set a list of 100 integers to 0 is to use a list comprehension. Here's an example:
+
+```python
+my_list = [0] * 100
+```
+
+This creates a new list with 100 elements, all initialized to 0, using the list multiplication operator `*`. This approach is concise and efficient.
+
+Q4. To initialize a list of 99 integers that repeats the sequence 1, 2, 3, you can use a list comprehension with the modulo operator (%). Here's an example:
+
+```python
+my_list = [i % 3 + 1 for i in range(99)]
+```
+
+In this example, the expression `i % 3 + 1` will cycle through the values 1, 2, 3 repeatedly as `i` increases from 0 to 98.
+
+Q5. If you're using IDLE to run a Python application and want to print a multidimensional list efficiently, you can use the `pprint` module. Here's an example:
+
+```python
+import pprint
+
+my_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+pprint.pprint(my_list)
+```
+
+The `pprint.pprint()` function will print the multidimensional list in a more readable format, with nested elements properly indented.
+
+Q6. Yes, it is possible to use list comprehension with a string in Python. You can iterate over the characters of a string and perform operations or filters to create a new list. Here's an example:
+
+```python
+my_string = "Hello, World!"
+my_list = [char.upper() for char in my_string if char.isalpha()]
+```
+
+In this example, the list comprehension creates a new list `my_list` containing uppercase versions of the alphabetic characters from `my_string`. The `char.upper()` expression converts each character to uppercase, and the `if char.isalpha()` condition filters out non-alphabetic characters.
+
+Q7. From the command line, to get support with a user-written Python program, you can use the `-m` flag with the `pydoc` module. Here's an example:
+
+```shell
+python -m pydoc <module_name>
+```
+
+Replace `<module_name>` with the name of the module you need help with. This command will display the module's documentation and available functions.
+
+As for IDLE, it does provide some level of support. You can use the built-in `help()` function to get help on Python objects and modules within the IDLE environment. Simply execute `help(<object>)` or `help(<module>)` in the IDLE shell, replacing `<object>` or `<module>` with the name of the object or module you want help with.
+
+Q8. In Python, functions are considered "first-class objects," which means they can be treated like any other object, such as integers or strings. This provides several capabilities that are not available in languages like C or C++. Some things you can do with functions in Python include:
+
+- Assigning functions to variables or storing them in data structures.
+- Passing functions as arguments to other functions.
+- Returning functions from other functions.
+- Creating anonymous functions (lambda functions) on the fly.
+- Modifying functions at runtime by adding attributes or assigning them to new names.
+
+These capabilities make functions highly flexible and enable powerful programming techniques such as higher-order functions, function decorators, and functional programming paradigms.
+
+Q9. In Python, the terms "wrapper," "wrapped feature," and "decorator" are often used in the context of function modification or enhancement.
+
+- A wrapper refers to a function or code that wraps around another function, allowing additional behavior to be added before or after the wrapped function is called. It acts as an intermediary between the caller and the wrapped function, providing a way to modify its input, output, or behavior.
+
+- The wrapped feature typically refers to the original function that is being wrapped by the wrapper. It represents the core functionality that the wrapper aims to enhance or modify.
+
+- A decorator is a special type of wrapper that uses the syntax of function annotations to modify another function or class. Decorators allow you to add functionality to functions or classes without modifying their source code directly. They provide a concise way to apply common modifications, such as logging, input validation, or performance measurement, to multiple functions or classes.
+
+Q10. If a function is a generator function in Python, it doesn't return a value in the traditional sense. Instead, it returns a generator object, which is an iterator. Generator functions use the `yield` keyword to yield values one at a time, allowing iterative processing without generating the entire sequence upfront. The caller can iterate over the generator object using a `for` loop or retrieve values using the `next()` function.
+
+Q11. The one improvement that must be made to a function in order for it to become a generator function in Python is to replace the `return` statements with `yield` statements. When a function encounters a `yield` statement, it temporarily suspends its execution, remembers its state, and yields a value to the caller. The next time the generator function is called, it resumes execution from where it left off, using the remembered state.
+
+By using `yield` instead of `return`, the function becomes a generator function that can generate a sequence of values on-the-fly without keeping the entire sequence in memory.
+
+Q12. One benefit of generators in Python is their memory efficiency. Since generators produce values on-demand, they don't need to store the entire sequence in memory at once. Instead, they generate values one at a time, reducing the memory footprint.
+
+This memory efficiency is especially useful when dealing with large or infinite sequences, as generators allow you to process elements as they are generated without requiring a massive amount of memory. Generators are often used in scenarios like reading large files, working with streaming data, or generating sequences based on complex algorithms where it's impractical or impossible to precompute the entire sequence.
+
+
+
+
+
+
