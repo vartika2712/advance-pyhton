@@ -1,0 +1,58 @@
+Q1. Define the relationship between a class and its instances. Is it a one-to-one or a one-to-many
+partnership, for example?
+
+Q2. What kind of data is held only in an instance?
+
+Q3. What kind of knowledge is stored in a class?
+
+Q4. What exactly is a method, and how is it different from a regular function?
+
+Q5. Is inheritance supported in Python, and if so, what is the syntax?
+
+Q6. How much encapsulation (making instance or class variables private) does Python support?
+
+Q7. How do you distinguish between a class variable and an instance variable?
+
+Q8. When, if ever, can self be included in a class&#39;s method definitions?
+
+Q9. What is the difference between the _ _add_ _ and the _ _radd_ _ methods?
+
+Q10. When is it necessary to use a reflection method? When do you not need it, even though you
+support the operation in question?
+
+Q11. What is the _ _iadd_ _ method called?
+
+Q12. Is the _ _init_ _ method inherited by subclasses? What do you do if you need to customize its
+behavior within a subclass?
+
+SOLUTION.
+Q1. The relationship between a class and its instances is a one-to-many partnership. A class is a blueprint or template for creating objects, while instances are individual objects created from that class.
+
+Q2. Instances hold specific data that is unique to each object. These data attributes are defined within the instance and can vary from one instance to another. They represent the state or characteristics of the individual object.
+
+Q3. A class stores knowledge in the form of class variables and methods. Class variables are shared among all instances of the class and represent shared attributes or characteristics. Methods define the behavior or actions that objects of the class can perform.
+
+Q4. In object-oriented programming, a method is a function that is associated with a class or an instance of a class. It defines the behavior or actions that the objects can perform. The key difference between a method and a regular function is that methods are defined within a class and operate on instances of the class, while regular functions are standalone and not tied to any specific class.
+
+Q5. Yes, inheritance is supported in Python. The syntax for inheritance in Python is as follows:
+
+```python
+class ChildClass(ParentClass):
+    # Class definition
+```
+
+By specifying the parent class in parentheses after the child class name, the child class inherits attributes and methods from the parent class.
+
+Q6. Python supports a certain level of encapsulation. It provides mechanisms for making instance variables private, but there is no strict enforcement like in some other programming languages. By convention, instance variables that should be treated as private are prefixed with a single underscore (_), indicating that they should not be accessed directly from outside the class. However, this is merely a convention, and the variables can still be accessed if needed.
+
+Q7. A class variable is shared among all instances of a class and is defined within the class itself. It is accessed using the class name. An instance variable, on the other hand, is specific to each instance of the class and is defined within the methods of the class. It is accessed using the instance name.
+
+Q8. The `self` parameter can be included in a class's method definitions to refer to the instance of the class. It must be the first parameter in the method definition, although you can choose any name for it (not necessarily "self"). By using `self`, you can access the instance variables and call other methods of the class within the method definition.
+
+Q9. The `__add__` and `__radd__` methods are used for implementing addition operations between objects. The `__add__` method is called when the `+` operator is used with the object on the left side, while the `__radd__` method is called when the object is on the right side of the `+` operator. If the object on the left side does not support addition with the object on the right side, Python checks if the object on the right side implements `__radd__` to perform the operation.
+
+Q10. Reflection methods, such as `__getattr__`, `__setattr__`, and `__delattr__`, are used to dynamically handle attribute access and modification at runtime. They allow you to intercept attribute operations and customize their behavior. Reflection methods are necessary when you want to implement custom attribute access or modify attribute access behavior. They are not needed when the default behavior of attribute access is sufficient for your requirements.
+
+Q11. The `__iadd__` method is called when the `+=` operator is used with an object. It is a special method used for in-place addition. It allows an object to define its own behavior when the in-place addition operation is performed.
+
+Q12. The `__init__` method is not inherited by subclasses in Python. However, if a subclass does not define its own `__init__` method, it will automatically inherit and use the `__init__` method of its parent class. If you need to customize the behavior of `__init__` within a subclass, you can override it by defining a new `__init__` method in the subclass. By calling the parent class's `__init__` method using `super()`, you can also invoke the parent class's `__init__` code alongside the customizations in the subclass.
