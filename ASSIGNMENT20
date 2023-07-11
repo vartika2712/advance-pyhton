@@ -1,0 +1,97 @@
+Q1. Compare and contrast the float and Decimal classes&#39; benefits and drawbacks.
+
+Q2. Decimal(&#39;1.200&#39;) and Decimal(&#39;1.2&#39;) are two objects to consider. In what sense are these the same
+object? Are these just two ways of representing the exact same value, or do they correspond to
+different internal states?
+
+Q3. What happens if the equality of Decimal(&#39;1.200&#39;) and Decimal(&#39;1.2&#39;) is checked?
+
+Q4. Why is it preferable to start a Decimal object with a string rather than a floating-point value?
+
+Q5. In an arithmetic phrase, how simple is it to combine Decimal objects with integers?
+
+Q6. Can Decimal objects and floating-point values be combined easily?
+
+Q7. Using the Fraction class but not the Decimal class, give an example of a quantity that can be
+expressed with absolute precision.
+
+Q8. Describe a quantity that can be accurately expressed by the Decimal or Fraction classes but not by
+a floating-point value.
+
+Q9.Consider the following two fraction objects: Fraction(1, 2) and Fraction(1, 2). (5, 10). Is the internal
+state of these two objects the same? Why do you think that is?
+
+Q10. How do the Fraction class and the integer type (int) relate to each other? Containment or inhertience?
+
+SOLUTION.
+1. The float and Decimal classes are both used to represent numbers with decimal points in Python, but they have some differences in terms of benefits and drawbacks.
+
+Float Class:
+- Benefits: Floats are implemented as binary fractions and allow for a wide range of values. They are efficient in terms of memory usage and computational speed. Floats are suitable for most general-purpose mathematical calculations.
+- Drawbacks: Floating-point numbers have limited precision due to their binary representation. This can lead to rounding errors and inaccuracies, especially when performing arithmetic operations with decimal values. Floats are subject to floating-point arithmetic limitations, such as issues with exact representation of certain decimal values.
+
+Decimal Class:
+- Benefits: Decimals provide a higher level of precision compared to floats. They are based on a decimal floating-point arithmetic model and can represent decimal values exactly. Decimals are ideal for applications that require precise decimal calculations, such as financial and monetary operations.
+- Drawbacks: Decimal numbers consume more memory and are generally slower to compute compared to floats. They may not be suitable for calculations requiring high performance or working with a large volume of data.
+
+2. Decimal('1.200') and Decimal('1.2') are two different objects that represent the same value. They correspond to different internal states due to the way the Decimal class handles trailing zeros. The Decimal class preserves all significant digits, including trailing zeros, when a string representation is used. Therefore, '1.200' and '1.2' have different internal states even though they represent the same value.
+
+3. If the equality of Decimal('1.200') and Decimal('1.2') is checked using the equality operator (==), it will return False. The Decimal class considers the internal state, including the significant digits and trailing zeros, when comparing values. Since the internal states of '1.200' and '1.2' are different, the equality check will fail.
+
+4. It is preferable to start a Decimal object with a string rather than a floating-point value because floating-point values can suffer from rounding errors and imprecise representations. When a string is used, the Decimal class can create an exact representation of the decimal value, preserving all significant digits. This ensures accuracy in decimal calculations, particularly when working with financial or precise numeric data.
+
+5. Combining Decimal objects with integers in arithmetic expressions is straightforward and doesn't require any additional steps. Decimal objects can be directly added, subtracted, multiplied, or divided with integers, and the result will be a Decimal object.
+
+Example:
+```python
+from decimal import Decimal
+
+decimal_num = Decimal('1.2')
+integer_num = 3
+
+result = decimal_num + integer_num
+print(result)  # Output: 4.2 (Decimal object)
+```
+
+6. Decimal objects and floating-point values can be combined in arithmetic expressions, but caution should be exercised due to the potential for rounding errors and precision loss. When a Decimal object and a float are combined, the result will be a float.
+
+Example:
+```python
+from decimal import Decimal
+
+decimal_num = Decimal('1.2')
+float_num = 3.5
+
+result = decimal_num + float_num
+print(result)  # Output: 4.7 (float)
+```
+
+7. Using the Fraction class, an example of a quantity that can be expressed with absolute precision is a fraction where the numerator and denominator have a common factor.
+
+Example:
+```python
+from fractions import Fraction
+
+fraction = Fraction(2, 4)
+print(fraction)  # Output: 1/2 (exact representation)
+```
+
+8. A quantity that can be accurately expressed by the Decimal or Fraction classes but not by a floating-point value is a repeating or non-terminating decimal.
+
+Example:
+```python
+from decimal import Decimal
+from fractions import Fraction
+
+decimal_num = Decimal('1.3333333333333333333333333333')
+fraction = Fraction(4, 3)
+
+print(decimal_num)  # Output: 1.3333333333333333333333333333 (exact representation)
+print(fraction)  # Output: 4/3 (exact representation)
+```
+
+Q9. The internal state of the two Fraction objects Fraction(1, 2) and Fraction(1, 2). (5, 10) is the same. The Fraction class automatically simplifies fractions by dividing the numerator and denominator by their greatest common divisor (GCD). In this case, both fractions reduce to 1/2, resulting in the same internal state.
+
+Q10. The Fraction class and the integer type (int) are related through containment. The Fraction class represents rational numbers as fractions with a numerator and a denominator, and the numerator and denominator are integer values. Integers can be contained within Fraction objects, and the Fraction class provides methods and operations to work with integers. However, the Fraction class is not a subclass of the integer type (int), so it doesn't inherit the properties and behaviors of the integer type.
+
+
