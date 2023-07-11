@@ -1,0 +1,37 @@
+Q1. What are the new features added in Python 3.8 version?
+Q2. What is monkey patching in Python?
+Q3. What is the difference between a shallow copy and deep copy?
+Q4. What is the maximum possible length of an identifier?
+Q5. What is generator comprehension?
+SOLUTION.
+1. Python 3.8, released in October 2019, introduced several new features. Some of the notable additions in Python 3.8 include:
+
+   a. Assignment Expressions (the Walrus operator): It allows assignment inside expressions, using the `:=` operator. This can be useful in simplifying code and improving readability.
+   
+   b. Positional-only parameters: Function definitions now support declaring parameters that can only be passed positionally and not as keyword arguments.
+   
+   c. The `math.prod()` function: This new function in the `math` module calculates the product of all the elements in an iterable.
+   
+   d. The `f-strings` debugging feature: `f-strings` now support the `=` specifier, which facilitates debugging by showing both the expression and its value.
+   
+   e. Syntax warning for final commas in function signatures: A warning is issued when a trailing comma is used in a function signature, as it may indicate a syntax error.
+   
+   f. Improved performance and optimization in various areas of the language.
+
+2. Monkey patching refers to the practice of modifying or extending code at runtime by adding, replacing, or modifying attributes or methods of existing objects or classes. In Python, you can dynamically modify classes or objects by adding new attributes or methods or modifying existing ones. This is possible because Python classes and objects are mutable. Monkey patching can be useful in situations where you want to modify the behavior of an existing class or object without directly modifying its source code.
+
+3. The difference between shallow copy and deep copy is as follows:
+
+   - Shallow Copy: A shallow copy creates a new object but references the same elements as the original object. It copies the references of the objects and not the objects themselves. Therefore, if the elements of the original object are mutable, changes made to those elements will be reflected in both the original and the copied object. In Python, you can use the `copy` module's `copy()` function or the slice operator (`[:]`) to create shallow copies.
+
+   - Deep Copy: A deep copy creates a new object and recursively copies all the objects it references. It creates a completely independent copy where changes made to the elements of one object do not affect the other. In Python, you can use the `copy` module's `deepcopy()` function to create deep copies.
+
+4. In Python, the maximum possible length of an identifier (variable name, function name, class name, etc.) is not explicitly defined. However, it is recommended to keep identifiers reasonably short and meaningful for the sake of code readability and maintainability. PEP 8, the official Python style guide, suggests limiting line lengths to 79 characters for improved readability.
+
+5. Generator comprehensions, also known as generator expressions, are a concise way to create generators in Python. They are similar to list comprehensions, but instead of creating a list, they create an iterable generator object. Generator comprehensions are written in a similar syntax to list comprehensions, but using parentheses instead of square brackets. Here's an example:
+
+```python
+generator = (x for x in range(10))
+```
+
+In the example above, the generator comprehension generates values from 0 to 9 when iterated over. The values are generated on the fly and not stored in memory all at once, making generator comprehensions memory-efficient for large data sets.
